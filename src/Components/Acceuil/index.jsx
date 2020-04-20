@@ -14,13 +14,31 @@ const Accueil = () => {
         },2000)
     },[])
 
+
+    const setLeftImg =()=>{
+        refWolverine.current.classList.add("leftImg");
+    }
+
+    const setRigthImg = () =>{
+        refWolverine.current.classList.add("rightImg");
+    }
+
+    const clearImage = () => {
+        if(refWolverine.current.classList.contains("leftImg")){//si contient la class "leftImg" 
+        refWolverine.current.classList.remove("rightImg");
+        }else if(refWolverine.current.classList.contains("rightImg"))
+        {
+            refWolverine.current.classList.remove("leftImg");
+        }
+    }
+
     const displayBtn = btn && (
         <Fragment>
                 <div className="leftBox">
-                    <button className ="btn-welcome"> Inscrition</button>
+                    <button onMouseOver={setLeftImg} onMouseOut={clearImage} className ="btn-welcome"> Inscrition</button>
                 </div>
                 <div className="rightBox">
-                    <button className ="btn-welcome">Connexion</button>
+                    <button onMouseOver={setRigthImg} onMouseOut={clearImage}  className ="btn-welcome">Connexion</button>
                 </div>
         </Fragment>
     )
